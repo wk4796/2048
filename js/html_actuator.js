@@ -126,14 +126,14 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "You win!" : "Game over!";
+  var message = won ? "你赢了!" : "游戏结束!";
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
 };
 
 HTMLActuator.prototype.clearMessage = function () {
-  // IE only takes one value to remove at a time.
+  // IE10 doesn't support multiple arguments to classList.remove()
   this.messageContainer.classList.remove("game-won");
   this.messageContainer.classList.remove("game-over");
 };
